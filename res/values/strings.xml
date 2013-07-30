@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TetrisBattle(Android)</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_main_menu">MainMenu</string>
+    <string name="start_bt">Start</string>
+    <string name="batt_bt">Battle</string>
+    <string name="stat_bt">Stats</string>
+    <string name="opt_bt">Options</string>
+    <string name="quit_bt">Quit</string>
+    <string name="title_activity_options">OptionsActivity</string>
+    <string name="title_activity_start">StartActivity</string>
+    <string name="classic_bt">Classic Mode</string>
+    <string name="timed_bt">Time Mode</string>
+    <string name="back_bt">Back</string>
+    <string name="title_activity_battle_menu">BattleMenu</string>
+    <string name="campaign_bt">Campaign</string>
+    <string name="marathon_bt">Marathon</string>
+    <string name="title_activity_stat">StatActivity</string>
+    <string name="title_activity_tetris">Tetris</string>
+    <string name="title_activity_dialogbox">Dialogbox</string>
+    <string name="quitg_bt">Quit Game</string>
+    <string name="game_paused">Game Paused</string>
+
+</resources>

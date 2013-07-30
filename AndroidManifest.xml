@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sixteen.tetrisbattleandroid"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="17" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.sixteen.tetrisbattleandroid.MainActivity"
+            android:label="@string/app_name"
+            android:noHistory="true"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.sixteen.tetrisbattleandroid.MainMenu"
+            android:label="@string/title_activity_main_menu"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="com.sixteen.tetrisbattleandroid.MAINMENU" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.sixteen.tetrisbattleandroid.OptionsActivity"
+            android:label="@string/title_activity_options"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="com.sixteen.tetrisbattleandroid.OPTIONSACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.sixteen.tetrisbattleandroid.StartActivity"
+            android:label="@string/title_activity_start"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="com.sixteen.tetrisbattleandroid.STARTACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.sixteen.tetrisbattleandroid.BattleMenu"
+            android:label="@string/title_activity_battle_menu"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="com.sixteen.tetrisbattleandroid.BATTLEMENU" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.sixteen.tetrisbattleandroid.StatActivity"
+            android:label="@string/title_activity_stat"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="com.sixteen.tetrisbattleandroid.STATACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.sixteen.tetrisbattleandroid.Tetris"
+            android:label="@string/title_activity_tetris"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="com.sixteen.tetrisbattleandroid.TETRIS" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.sixteen.tetrisbattleandroid.Dialogbox"
+            android:label="@string/title_activity_dialogbox" >
+        </activity>
+    </application>
+
+</manifest>

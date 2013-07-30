@@ -1,0 +1,85 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/statsbg"
+    android:orientation="vertical" 
+    android:splitMotionEvents="false"
+    tools:context=".StatActivity" >
+
+    <ViewFlipper
+        android:id="@+id/vfstats"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btSBack"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="123dp"
+        android:background="@drawable/alpha" >
+
+        <RelativeLayout
+            android:id="@+id/linear1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/alpha" >
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="17dp"
+                android:text="Single Player" />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView2"
+                android:layout_marginTop="18dp"
+                android:layout_toLeftOf="@+id/textView2"
+                android:text="1. Itachi Uchiha" />
+
+       </RelativeLayout>
+        
+       <RelativeLayout
+            android:id="@+id/linear2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/alpha" >
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="17dp"
+                android:text="Battle" />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView2"
+                android:layout_marginTop="18dp"
+                android:layout_toLeftOf="@+id/textView2"
+                android:text="1. Sasuke Uchiha" />
+
+        </RelativeLayout>
+    </ViewFlipper>
+
+ <Button
+     android:id="@+id/btSBack"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_alignParentBottom="true"
+     android:layout_centerHorizontal="true"
+     android:layout_marginBottom="56dp"
+     android:background="@drawable/onooffbt"
+     android:lineSpacingMultiplier="0.5"
+     android:text="Back   "
+     android:textSize="35sp" />
+
+</RelativeLayout>

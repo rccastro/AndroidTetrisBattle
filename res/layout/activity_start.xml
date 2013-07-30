@@ -1,0 +1,39 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/menubg"
+    android:splitMotionEvents="false"
+    tools:context=".StartActivity" >
+
+     <Button
+        android:id="@+id/btclassic"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/bttimed"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="206dp"
+        android:background="@drawable/button"
+        android:text="@string/classic_bt" />
+     
+    <Button
+        android:id="@+id/bttimed"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btclassic"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button"
+        android:text="@string/timed_bt" />
+
+    <Button
+        android:id="@+id/btback"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bttimed"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button"
+        android:text="@string/back_bt" />
+
+   
+
+</RelativeLayout>

@@ -1,0 +1,46 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Dialogbox" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:textSize="16sp"
+        android:text="@string/game_paused" />
+
+    <Button
+        android:id="@+id/resumebt"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@+id/textView1"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_toLeftOf="@+id/textView1"
+        android:background="@drawable/resume_bt" />
+
+    <Button
+        android:id="@+id/quitbt"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignBaseline="@+id/restartbt"
+        android:layout_alignBottom="@+id/restartbt"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/exit_bt" />
+
+    <Button
+        android:id="@+id/restartbt"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignBaseline="@+id/resumebt"
+        android:layout_alignBottom="@+id/resumebt"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/restart_bt" />
+
+</RelativeLayout>

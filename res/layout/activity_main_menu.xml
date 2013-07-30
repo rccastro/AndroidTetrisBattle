@@ -1,0 +1,55 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/menubg"
+    android:splitMotionEvents="false"
+    tools:context=".MainMenu" >
+
+    <Button
+        android:id="@+id/btbatt"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btstart"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button"
+        android:text="@string/batt_bt" />
+
+    <Button
+        android:id="@+id/btstat"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btbatt"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button"
+        android:text="@string/stat_bt" />
+
+    <Button
+        android:id="@+id/btopt"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btstat"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button"
+        android:text="@string/opt_bt" />
+
+    <Button
+        android:id="@+id/btquit"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btopt"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button"
+        android:text="@string/quit_bt" />
+
+    <Button
+        android:id="@+id/btstart"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btbatt"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="136dp"
+        android:background="@drawable/button"
+        android:text="@string/start_bt" />
+
+</RelativeLayout>
