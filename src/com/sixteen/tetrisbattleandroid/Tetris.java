@@ -18,7 +18,7 @@ public class Tetris extends Activity {
      
        final Context context =this;
         String fontPath1;
-        TextView lv, score;
+        public static TextView lv, score;
         private Button mStartButton;
         private Button mPauseButton;
         private Button mResumeButton;
@@ -44,7 +44,7 @@ public class Tetris extends Activity {
 		
 		lv.setTypeface(txt);
 		score.setTypeface(txt);
-		
+		score.setText(Integer.toString(TetrisTileView.score));
 	
 
 		 mTetrisView = (TetrisTileView) findViewById(R.id.tetris_tile_view);
@@ -113,6 +113,11 @@ public class Tetris extends Activity {
 	                TetrisTileView.mFinishedPlayerCount = 0;
 	                
 	                mTetrisView.setMode(TetrisTileView.READY);
+	                
+	                //Reset
+                    TetrisTileView.score=0;
+                    //update scoreboard
+                    score.setText(Integer.toString(TetrisTileView.score));
 	          
 	            }
 	        });
