@@ -329,7 +329,8 @@ public class TetrisTileView extends TileView {
                                                 for(int x=0; x<mXTileCount; x++) {
                                                         mBoard[x][tmpLine.mLine] = BACK_IMG;
                                                 }
-                                        }                               
+                                        }
+                                        
                                         break;
                                 case 1: case 3://Re-appear
                                         for(MergeLine tmpLine : mMergeLines) {
@@ -352,7 +353,6 @@ public class TetrisTileView extends TileView {
                                         return;
                                         
                         }
-                       // score += scoreIncrement;
                         mMergeTimes++;
                         drawBoard();
                         invalidate();
@@ -394,6 +394,10 @@ public class TetrisTileView extends TileView {
 
                 if(mMergeLines.isEmpty()==false) {
                         mMergeTimes = 0;
+                        //Add score
+                        score=score+scoreIncrement;
+                        //update scoreboard
+                        Tetris.score.setText(Integer.toString(score));
                         mergeAnimations();
                         return true;
                 }
