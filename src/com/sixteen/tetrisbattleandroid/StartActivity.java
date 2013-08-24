@@ -3,6 +3,7 @@ package com.sixteen.tetrisbattleandroid;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -54,6 +55,7 @@ public class StartActivity extends Activity {
 				btClick.start();	//Play SFX
 				
 				try{
+					TetrisTileView.gameMode = "classic";
 					Intent openMain = new Intent("com.sixteen.tetrisbattleandroid.TETRIS");
 					startActivity(openMain);
 				}catch(Exception e){
@@ -72,6 +74,14 @@ public class StartActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				btClick.start();	//Play SFX
+				try{
+					TetrisTileView.gameMode = "time";
+					Intent openMain = new Intent("com.sixteen.tetrisbattleandroid.TIMEMODE");
+					startActivity(openMain);
+				}catch(Exception e){
+					
+					e.printStackTrace();
+				}
 			}
 		});
 				

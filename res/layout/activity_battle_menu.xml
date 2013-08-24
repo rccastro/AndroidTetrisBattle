@@ -7,29 +7,29 @@
     tools:context=".BattleMenu" >
 
     <Button
-        android:id="@+id/btcampaign"
+        android:id="@+id/btcreate"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btmarathon"
+        android:layout_alignLeft="@+id/btjoin"
         android:layout_alignParentTop="true"
         android:layout_marginTop="206dp"
         android:background="@drawable/button"
-        android:text="@string/campaign_bt" />
+        android:text="@string/create_bt" />
      
     <Button
-        android:id="@+id/btmarathon"
+        android:id="@+id/btjoin"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btcampaign"
+        android:layout_below="@+id/btcreate"
         android:layout_centerHorizontal="true"
         android:background="@drawable/button"
-        android:text="@string/marathon_bt" />
+        android:text="@string/join_bt" />
 
     <Button
         android:id="@+id/btbback"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btmarathon"
+        android:layout_below="@+id/btjoin"
         android:layout_centerHorizontal="true"
         android:background="@drawable/button"
         android:text="@string/back_bt" />

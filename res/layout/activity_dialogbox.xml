@@ -15,7 +15,7 @@
         android:text="@string/game_paused" />
 
     <Button
-        android:id="@+id/resumebt"
+        android:id="@+id/resumebtdialog"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_below="@+id/textView1"
@@ -38,8 +38,8 @@
         android:id="@+id/restartbt"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_alignBaseline="@+id/resumebt"
-        android:layout_alignBottom="@+id/resumebt"
+        android:layout_alignBaseline="@+id/resumebtdialog"
+        android:layout_alignBottom="@+id/resumebtdialog"
         android:layout_centerHorizontal="true"
         android:background="@drawable/restart_bt" />
 

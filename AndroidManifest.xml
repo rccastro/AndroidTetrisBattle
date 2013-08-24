@@ -6,7 +6,11 @@
 
     <uses-sdk
         android:minSdkVersion="11"
-        android:targetSdkVersion="17" />
+        android:targetSdkVersion="11" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -87,6 +91,42 @@
         <activity
             android:name="com.sixteen.tetrisbattleandroid.Dialogbox"
             android:label="@string/title_activity_dialogbox" >
+        </activity>
+        <activity
+            android:name="com.sixteen.tetrisbattleandroid.CountdownDialog"
+            android:label="@string/title_activity_countdown_dialog" >
+        </activity>
+        <activity
+            android:name="com.sixteen.tetrisbattleandroid.DeviceList"
+            android:label="@string/title_activity_device_list" >
+        </activity>
+        <activity
+            android:name="com.sixteen.tetrisbattleandroid.DeviceName"
+            android:label="@string/title_activity_device_name" >
+        </activity>
+        <activity
+            android:name="com.sixteen.tetrisbattleandroid.TimeMode"
+            android:label="@string/title_activity_time_mode"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="com.sixteen.tetrisbattleandroid.TIMEMODE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.sixteen.tetrisbattleandroid.OutOfTime"
+            android:label="@string/title_activity_out_of_time" >
+        </activity>
+        <activity
+            android:name="com.sixteen.tetrisbattleandroid.BattleMode"
+            android:label="@string/title_activity_battle_mode"   
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="com.sixteen.tetrisbattleandroid.BATTLEMODE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 

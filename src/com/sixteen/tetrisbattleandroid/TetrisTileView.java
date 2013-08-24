@@ -5,6 +5,7 @@ import java.util.Random;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
@@ -16,8 +17,12 @@ import android.widget.TextView;
 
 public class TetrisTileView extends TileView {
 
-		public static final int scoreIncrement = 20;
+	//	public static final int scoreIncrement = 40;
 		public static int score= 0;
+		public static int lines = 0;
+		public static int level =1;
+		public static int goal;
+		public static String gameMode;
 		//public static TextView scoreText;
 		
         private static final int BACK_IMG = 0;
@@ -38,13 +43,15 @@ public class TetrisTileView extends TileView {
         private static final int IMG_COUNT = 15;
 
         private TetrisPiece[] mAllTetrisPieces;
+        private TetrisPiece mTempPiece;
         
         
 
-        private class TetrisPiece {                             
+        public class TetrisPiece {                             
 
                 /** mImage name of the piece block **/
                 public int mImage;
+                
 
                 //Alpha version
                 public int mAlphaImage;
@@ -55,6 +62,7 @@ public class TetrisTileView extends TileView {
                 //constructor
                 public TetrisPiece(int image, int alphaImage, TetrisPieceRotation[] rotations)
                 {
+                		
                         mImage = image;
                         mAlphaImage = alphaImage;
                         mRotations = rotations;
@@ -64,7 +72,7 @@ public class TetrisTileView extends TileView {
         }
 
         /*Rotation */
-        private class TetrisPieceRotation {
+        public class TetrisPieceRotation {
                 public int mWidth;      
                 public int mHeight;
                 public int mCenterX;
@@ -113,14 +121,15 @@ public class TetrisTileView extends TileView {
                 tmpRotation[1] = new TetrisPieceRotation(2, 3, 2, 2, "101101");
                 mAllTetrisPieces[3] = new TetrisPiece(BLUE_IMG, ALPHA_BLUE_IMG, tmpRotation);           
 
-                //U-tetri
+                //T-tetri
+              //T-tetri
                 tmpRotation = new TetrisPieceRotation[4];
-                tmpRotation[0] = new TetrisPieceRotation(2, 2, 1, 1, "1101");
-                tmpRotation[1] = new TetrisPieceRotation(2, 2, 2, 1, "0111");
-                tmpRotation[2] = new TetrisPieceRotation(2, 2, 1, 2, "1011");
-                tmpRotation[3] = new TetrisPieceRotation(2, 2, 1, 2, "1101");
+                tmpRotation[0] = new TetrisPieceRotation(3, 2, 2, 2, "010111");
+                tmpRotation[1] = new TetrisPieceRotation(2, 3, 2, 2, "011101");
+                tmpRotation[2] = new TetrisPieceRotation(3, 2, 2, 1, "111010");
+                tmpRotation[3] = new TetrisPieceRotation(2, 3, 1, 2, "101110");
                 mAllTetrisPieces[4] = new TetrisPiece(ORANGE_IMG, ALPHA_ORANGE_IMG, tmpRotation);
-
+              
                 //O-tetri
                 tmpRotation = new TetrisPieceRotation[1];
                 tmpRotation[0] = new TetrisPieceRotation(2, 2, 1, 1, "1111");
@@ -135,6 +144,39 @@ public class TetrisTileView extends TileView {
 
                 
         }
+        
+        public static void setGoal(int mlevel){
+        	 goal=16;
+        	
+        	if(mlevel >= 6 && mlevel <= 10){
+        		goal += 10;
+        	}
+        	else if(mlevel <= 10 && mlevel > 5){
+        		goal += 10;
+        	}
+        	else if(mlevel <= 15 && mlevel > 10){
+        		goal += 20;        		
+        	}
+        		
+        	
+        }
+        
+        public int setScore(int mmergelines, int lv){
+        	switch(mmergelines){
+        		case 2:
+        			return 100 * level;
+        		case 3:
+        			return 300 * level;
+        		case 4:
+        			return 1200 * level;
+        		default:
+        			return 40 * level;
+        	}
+        	
+        	
+        }
+        
+        
 
         void clearTetrisPiece(int centerX, int centerY, TetrisPiece piece, int rotationIndex) {
                 TetrisPieceRotation rotation = piece.mRotations[rotationIndex];
@@ -369,7 +411,7 @@ public class TetrisTileView extends TileView {
         private boolean findMergingLines() {
                 mMergeLines.clear();
                 
-                
+                int mergetimes=0;
                 
                 for(int y=0; y<mYTileCount; y++) {
                         boolean all=true;
@@ -387,7 +429,7 @@ public class TetrisTileView extends TileView {
                                 for(int x=0; x<mXTileCount; x++)
                                         tmpLine.mLineTile[x] = mBoard[x][y];
                                 mMergeLines.add(tmpLine);
-                                
+                                mergetimes++;
                                 
                         }
                 }
@@ -395,10 +437,32 @@ public class TetrisTileView extends TileView {
                 if(mMergeLines.isEmpty()==false) {
                         mMergeTimes = 0;
                         //Add score
-                        score=score+scoreIncrement;
-                        //update scoreboard
-                        Tetris.score.setText(Integer.toString(score));
+                        score=score+(setScore(mergetimes, level));
+                        
+                        //deduct the completed lines for the goals.
+                        lines += mergetimes;
+                        
                         mergeAnimations();
+                        
+                           if(gameMode == "classic"){
+                        	   Tetris.score.setText(Integer.toString(score));
+                               Tetris.comlines.setText(Integer.toString(lines));
+                          	goal -= mergetimes;
+                          	//update scoreboard
+                              Tetris.goal.setText(Integer.toString(goal));
+                              //check to level up
+                              if(goal <= 0){
+                              	level++;
+                              	setGoal(level);
+                              	Tetris.goal.setText(Integer.toString(goal));
+                              	Tetris.lv.setText(Integer.toString(level));
+                           }
+                        }
+                       else if(gameMode == "time"){
+                    	   TimeMode.score.setText(Integer.toString(score));
+                           TimeMode.comlines.setText(Integer.toString(lines));
+                        }
+                        
                         return true;
                 }
                 else
@@ -449,7 +513,7 @@ public class TetrisTileView extends TileView {
                 
                 Resources r = this.getContext().getResources();
         
-                loadTile(BACK_IMG, r.getDrawable(R.drawable.bg));
+                loadTile(BACK_IMG, r.getDrawable(R.drawable.alpha));
                 loadTile(MAGENTA_IMG, r.getDrawable(R.drawable.brownblock));
                 loadTile(YELLOW_IMG, r.getDrawable(R.drawable.yellowblock));
                 loadTile(GREEN_IMG, r.getDrawable(R.drawable.greenblock));
@@ -673,24 +737,11 @@ public class TetrisTileView extends TileView {
             sendMessageDelayed(obtainMessage(0), delayMillis);
         }
     };
-    
-  //      private static Button mResetButton;
-    //    private static Button mPauseButton;
-        
-     //   public static void setButtons(Button resetButton, Button pauseButton)
-       // {
-         //       mResetButton = resetButton;
-           //     mPauseButton = pauseButton;
-        //}
-    	//public static void setTextView(TextView mscore){
-    		//scoreText = mscore;
-    		
-    //	}
-    	
+       	
         
         private int mMode = READY;
-        public static int mPlayerCount = 0;
-        public static int mFinishedPlayerCount = 0;
+      //  public static int mPlayerCount = 0;
+        
         public static final int PAUSE = 0;
         public static final int READY = 1;
         public static final int RUNNING = 2;
@@ -699,18 +750,18 @@ public class TetrisTileView extends TileView {
         private long mMoveDelay = 600;
         private long PAUSE_REFRESH_DELAY = 10;
 
-        private boolean mFalling = false;
+        public boolean mFalling = false;
 
-        private TetrisPiece mNextPiece = null;
-        private TetrisPiece mFallingPiece = null;
-        private int mFallingRotation;
-        private int mFallingCenterX;
-        private int mFallingCenterY;
+        public TetrisPiece mNextPiece = null;
+        public TetrisPiece mFallingPiece = null;
+        public int mFallingRotation;
+        public int mFallingCenterX;
+        public int mFallingCenterY;
 
         private static final Random RND = new Random(System.currentTimeMillis());
 
         private void newGame() {
-                mPlayerCount++;
+                
                 clearBoard();
                 drawBoard();
                 mFalling = false;
@@ -738,12 +789,27 @@ public class TetrisTileView extends TileView {
                                 if(mNextPiece==null) {
                                         mFallingPiece = mAllTetrisPieces[RND.nextInt(mAllTetrisPieces.length)];
                                         mNextPiece= mAllTetrisPieces[RND.nextInt(mAllTetrisPieces.length)];
+                                        if(gameMode == "classic"){
+                                       	 Tetris.mNext.setImageDrawable(loadImage(mNextPiece.mImage));
+                                        }
+                                        else if(gameMode == "time"){
+                                         TimeMode.mNext.setImageDrawable(loadImage(mNextPiece.mImage));
+                                        }
+                                        
                                 }
                                 else
                                 {
                                         mFallingPiece = mNextPiece;
                                         mNextPiece= mAllTetrisPieces[RND.nextInt(mAllTetrisPieces.length)];
+                                        if(gameMode == "classic"){
+                                        	 Tetris.mNext.setImageDrawable(loadImage(mNextPiece.mImage));
+                                        }
+                                        else if(gameMode == "time"){
+                                        	 TimeMode.mNext.setImageDrawable(loadImage(mNextPiece.mImage));
+                                        }
+                                       
                                 }
+                              
 
                                 mFallingRotation = RND.nextInt(mFallingPiece.mRotations.length);
                                 mFallingCenterX = RND.nextInt(mXTileCount-mFallingPiece.mRotations[mFallingRotation].mWidth+1)
@@ -781,6 +847,32 @@ public class TetrisTileView extends TileView {
               }
         }
 
+    	public Drawable loadImage(int key){
+    		
+    		Resources r = this.getContext().getResources();
+    		   
+    		   if(key == 1)
+    			   return  r.getDrawable(R.drawable.j_block); 
+    			 
+    			else if(key == 2)
+    			   return  r.getDrawable(R.drawable.l_block);   
+    			   
+    			else if(key == 3)
+    			   return  r.getDrawable(R.drawable.z_block);  
+    			else if(key == 4)
+    			   return  r.getDrawable(R.drawable.s_block);  
+    			else if(key == 5)
+    			   return  r.getDrawable(R.drawable.t_block);	   
+    			else if(key == 6)
+    			   return  r.getDrawable(R.drawable.o_block); 
+    			else if(key == 7)
+    			   return  r.getDrawable(R.drawable.i_block);	   
+    			else
+    				   return  r.getDrawable(R.drawable.alpha);			   
+    			   
+    		   
+    	       
+    	 }
         
 
     public void setMode(int newMode) {
@@ -800,22 +892,37 @@ public class TetrisTileView extends TileView {
         }
 
         if (newMode == PAUSE) {
-//            str = res.getText(R.string.mode_pause);
+
         }
         if (newMode == READY) {
                 newGame();
         }
         if (newMode == LOSE) {
-                mFinishedPlayerCount++;
-                if(mFinishedPlayerCount==mPlayerCount) {
-                     //   mResetButton.setVisibility(View.VISIBLE);
-                       // mPauseButton.setVisibility(View.INVISIBLE);
-                }
-//            str = res.getString(R.string.mode_lose_prefix) + mScore
-//                  + res.getString(R.string.mode_lose_suffix);
+               if(gameMode == "classic"){
+            	  
+               }
+               else if(gameMode == "time"){
+            	   
+               }
+               else if(gameMode == "battle"){
+            	   
+               }
+            	   
         }
 
-//        mStatusText.setText(str);
-//        mStatusText.setVisibility(View.VISIBLE);
+    }
+    
+    public void hold(){
+    	TetrisPiece temp;
+    	
+    	if(mTempPiece == null){
+    		mTempPiece = mFallingPiece;
+    	}else{
+    		temp = mFallingPiece;
+    		mFallingPiece = mTempPiece;
+    		mTempPiece = temp;
+    	}  	    	
+    	 clearTetrisPiece(mFallingCenterX, mFallingCenterY-1, mFallingPiece, mFallingRotation);
+    	
     }
 }

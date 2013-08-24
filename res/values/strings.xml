@@ -16,12 +16,24 @@
     <string name="timed_bt">Time Mode</string>
     <string name="back_bt">Back</string>
     <string name="title_activity_battle_menu">BattleMenu</string>
-    <string name="campaign_bt">Campaign</string>
-    <string name="marathon_bt">Marathon</string>
+    <string name="create_bt">Create</string>
+    <string name="join_bt">Join</string>
     <string name="title_activity_stat">StatActivity</string>
     <string name="title_activity_tetris">Tetris</string>
     <string name="title_activity_dialogbox">Dialogbox</string>
     <string name="quitg_bt">Quit Game</string>
     <string name="game_paused">Game Paused</string>
+    <string name="title_activity_countdown_dialog">CountdownDialog</string>
+    <string name="title_activity_device_list">DeviceList</string>
+    <string name="select_device">select a device from the list</string>
+    <string name="none_found">no device found</string>
+    <string name="none_paired">No devices have been paired</string>
+    <string name="scanning">scanning for devices....</string>
+    <string name="title_activity_device_name">DeviceName</string>
+    <string name="title_activity_time_mode">TimeMode</string>
+    <string name="title_activity_time_up_dialog">TimeUpDialog</string>
+    <string name="bt_tryagain">Try Again</string>
+    <string name="title_activity_out_of_time">OutOfTime</string>
+    <string name="title_activity_battle_mode">BattleMode</string>
 
 </resources>

@@ -12,10 +12,13 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
+
 public class MainMenu extends Activity {
 
 	Button btstart, batt, stats, opt, quit;
 	MediaPlayer btClick, btQuit;
+	
+	 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -51,13 +54,7 @@ public class MainMenu extends Activity {
 					@Override
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
-						/*try{
-							btClick.start();	//Play SFX
-							Intent mainApp1 = new Intent("com.sixteen.tetrisbattleandroid.STARTACTIVITY");
-							startActivity(mainApp1);
-						} catch(Exception e){
-							e.printStackTrace();
-						}*/
+						
 						openIntent("com.sixteen.tetrisbattleandroid.STARTACTIVITY");
 					}
 				});
@@ -69,6 +66,8 @@ public class MainMenu extends Activity {
 					@Override
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
+										
+						
 						openIntent("com.sixteen.tetrisbattleandroid.BATTLEMENU");
 					}
 				});
@@ -90,14 +89,7 @@ public class MainMenu extends Activity {
 					@Override
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
-						
-						/*try{
-							btClick.start();	//Play SFX
-							Intent mainApp = new Intent("com.sixteen.tetrisbattleandroid.OPTIONSACTIVITY");
-							startActivity(mainApp);
-						} catch(Exception e){
-							e.printStackTrace();
-						}*/
+					
 						openIntent("com.sixteen.tetrisbattleandroid.OPTIONSACTIVITY");	
 						
 					}
@@ -116,6 +108,7 @@ public class MainMenu extends Activity {
 				});
 			}
 
+
 	public void openIntent(String pth){
 		
 		try{
@@ -128,8 +121,7 @@ public class MainMenu extends Activity {
 			
 	}	
 	
-
-	//setting up the button attributes
+		//setting up the button attributes
 		public void setButtons(Button bt){
 			String fontPath = "SFSlapstickComicShaded.ttf";
 			Typeface txt = Typeface.createFromAsset(getAssets(), fontPath);
